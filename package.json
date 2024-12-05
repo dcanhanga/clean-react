@@ -4,7 +4,7 @@
 	"version": "1.0.0",
 	"type": "module",
 	"scripts": {
-    "test": "vitest",
+		"test": "vitest",
 		"dev": "vite",
 		"build": "tsc -b && vite build",
 		"lint": "biome format --write ./src",
@@ -17,6 +17,7 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
+		"@faker-js/faker": "9.3.0",
 		"@types/react": "^18.3.12",
 		"@types/react-dom": "^18.3.1",
 		"@vitejs/plugin-react-swc": "^3.5.0",
@@ -27,7 +28,7 @@
 		"vite": "^6.0.1",
 		"vitest": "^2.1.8"
 	},
-  "lint-staged": {
+	"lint-staged": {
 		"*": ["biome check --write --no-errors-on-unmatched"],
 		"*.{spec.ts,test.ts}": ["bun test"]
 	}
