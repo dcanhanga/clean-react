@@ -1,19 +1,23 @@
 import { describe, expect, test } from 'vitest'
-import type { HttpPostClient } from '../../protocols/http/http-post-client'
+import { HttpPostClientSpy } from '../../test/mock-http-client'
 import { RemoteAuthentication } from './remote-authentication'
+type SutTypes = {
+	sut: RemoteAuthentication
+	httpPostClientSpy: HttpPostClientSpy
+}
+const makeSut = (url = 'valid_url'): SutTypes => {
+	const httpPostClientSpy = new HttpPostClientSpy()
+	const sut = new RemoteAuthentication(url, httpPostClientSpy)
+	return {
+		httpPostClientSpy,
+		sut,
+	}
+}
 
 describe('RemoteAuthentication', () => {
 	test('should call httpPostClient with correct URL', async () => {
-		class HttpPostClientSpy implements HttpPostClient {
-			url: string | null = null
-			async post(url: string): Promise<void> {
-				this.url = url
-				return Promise.resolve()
-			}
-		}
-		const url = 'valid_url'
-		const httpPostClientSpy = new HttpPostClientSpy()
-		const sut = new RemoteAuthentication(url, httpPostClientSpy)
+		const url = 'any_url'
+		const { httpPostClientSpy, sut } = makeSut(url)
 		await sut.auth()
 		expect(httpPostClientSpy.url).toBe(url)
 	})
