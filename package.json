@@ -1,0 +1,33 @@
+{
+	"name": "clean-react",
+	"private": true,
+	"version": "1.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "tsc -b && vite build",
+		"lint": "biome format --write ./src",
+		"preview": "vite preview",
+		"prepare": "husky"
+	},
+	"dependencies": {
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"@types/react": "^18.3.12",
+		"@types/react-dom": "^18.3.1",
+		"@vitejs/plugin-react-swc": "^3.5.0",
+		"git-commit-msg-linter": "5.0.8",
+		"husky": "9.1.7",
+		"lint-staged": "15.2.10",
+		"typescript": "~5.6.2",
+		"vite": "^6.0.1",
+		"vitest": "^2.1.8"
+	},
+  "lint-staged": {
+		"*": ["biome check --write --no-errors-on-unmatched"],
+		"*.{spec.ts,test.ts}": ["bun test"]
+	}
+}

@@ -1,0 +1,49 @@
+{
+	"$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+	"vcs": {
+		"enabled": false,
+		"clientKind": "git",
+		"useIgnoreFile": true
+	},
+
+	"organizeImports": {
+		"enabled": true
+	},
+	"linter": {
+		"ignore": [
+			"node_modules/*",
+			"*.config.*",
+			"*.json",
+			"tsconfig.json",
+			".turbo",
+			".vscode"
+		],
+		"enabled": true,
+		"rules": {
+			"recommended": true,
+			"complexity": { "noStaticOnlyClass": "off", "useLiteralKeys": "off" },
+			"performance": {
+				"recommended": true
+			},
+			"style": {
+				"noUnusedTemplateLiteral": "off"
+			}
+		}
+	},
+	"javascript": {
+		"formatter": {
+			"quoteStyle": "single",
+			"semicolons": "asNeeded"
+		}
+	},
+	"formatter": {
+		"enabled": true,
+		"ignore": [
+			"node_modules/*",
+			"*.config.*",
+			"*.json",
+			"tsconfig.json",
+			".vscode"
+		]
+	}
+}
