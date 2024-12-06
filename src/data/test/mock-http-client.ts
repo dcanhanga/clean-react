@@ -5,8 +5,10 @@ import type {
 
 export class HttpPostClientSpy implements HttpPostClient {
 	url: string | null = null
+	body: HttpPostParams['body'] | null = null
 	async post(params: HttpPostParams): Promise<void> {
 		this.url = params.url
+		this.body = params.body
 		return Promise.resolve()
 	}
 }
